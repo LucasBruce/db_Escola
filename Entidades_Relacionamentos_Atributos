@@ -1,0 +1,63 @@
+
+=>ENTIDADES:
+
+#ALUNO
+#SERIE
+#DISCIPLINA
+#COORDENAÇÂO
+#PROFESSOR
+#TURMA
+#HISTÒRICO
+
+
+=>RELACIONAMENTOS:
+
+
+#ALUNO(0:n) matriculado em uma (0:1)SERIE apenas;
+
+#ALUNO cursa DISCIPLINA(n:n);
+
+#HISTÒRICO traz DISCIPLINA(n:n);
+
+#SERIE composta por DISCIPLINA(n:n);
+
+#DISCIPLINA depende SERIE(n:n);
+
+#SERIE(0:n) depende SERIE(0:n);
+
+#DISCIPLINA(1:n) pertence COORDENAÇÂO(1:n);
+
+#PROFESSOR vinculado COORDENAÇÂO(n:n);
+
+
+=>ATRIBUTOS:
+
+#ALUNO
+  -ra
+  -nome_aluno
+  -sobrenome_aluno
+  
+#COORDENAÇÂO
+  -id_coordenacao 
+  -turno
+  
+#PROFESSOR
+  -id_professor
+  -nome_professor
+  -sobrenome_professor
+  
+#DISCIPLINA
+  -id_disciplina
+  -nome_disciplina
+  
+#TURMA
+  -id_turma
+  -classificacao
+  -turno
+  
+#HISTÒRICO
+  -id_historico
+  -nota
+  -freguencia 
+  -semestre
+  
