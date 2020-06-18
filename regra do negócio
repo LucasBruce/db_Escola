@@ -10,7 +10,7 @@ Regras do Negócio
 
 #As disciplinas podem ser obrigatórias ou optativas, dependendo da serie;
 
-#As disciplinas pertencem a uma coordenação específica(turno);
+#Coordenação específica(turno) é reponsável por disciplinas;
 
 #Cada disciplina possui um código de identificação;
 

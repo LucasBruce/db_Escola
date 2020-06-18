@@ -8,56 +8,102 @@
 #PROFESSOR
 #TURMA
 #HISTÒRICO
-
+#COORDENACAO_PROFESSOR
+#DISCIPLINA_PROFESSOR
+#DISCIPLINA_HISTORICO
 
 =>RELACIONAMENTOS:
 
 
-#ALUNO(0:n) matriculado em uma (0:1)SERIE apenas;
+#ALUNO(1:n) matriculado em uma (1:1)SERIE apenas;
 
 #ALUNO cursa DISCIPLINA(n:n);
 
-#HISTÒRICO traz DISCIPLINA(n:n);
+#HISTÒRICO traz DISCIPLINA(n:n);#
 
-#SERIE composta por DISCIPLINA(n:n);
+#DISCIPLINA depende SERIE(n:n);#
 
-#DISCIPLINA depende SERIE(n:n);
+#SERIE(0:n) depende SERIE(0:n);#
 
-#SERIE(0:n) depende SERIE(0:n);
+#COORDENAÇÂO reponsavel DISCIPLINA(n:n);#
 
-#DISCIPLINA(1:n) pertence COORDENAÇÂO(1:n);
+#COORDENAÇÂO reponsavel SERIE;#
 
-#PROFESSOR vinculado COORDENAÇÂO(n:n);
+#PROFESSOR vinculado COORDENAÇÂO(n:n);#
 
+#ALUNO pertence TURMA;#
+
+#SERIE possui TURMA;#
+
+#DISCIPLINA trazida por DISCIPLINA_HISTORICO;#
+
+#HISTORICO traz DISCIPLINA_HISTORICO;#
+
+#PROFESSOR ministra DISCIPLINA_PROFESSOR;#
+
+#DISCIPLINA ministrada por DISCIPLINA_PROFESSOR;#
 
 =>ATRIBUTOS:
 
-#ALUNO
+#ALUNO#
   -ra
   -nome_aluno
   -sobrenome_aluno
+  -endereco
+     -bairro
+     -rua
+     -cep
+     -numero
+   -id_serie
+   -*telefone
+   -status
+   -filiacao
+   -sexo
+   -*contato(whatsapp, e-mail)
+   -id_turma
+   -cpf
   
-#COORDENAÇÂO
-  -id_coordenacao 
+#COORDENAÇÂO#
+  -id_coordenacao
+  -nome_coordenacao 
   -turno
+
+#SERIE
+  -id_serie
+  -nome_serie
+  -id_coordenacao
   
-#PROFESSOR
+#PROFESSOR#
   -id_professor
   -nome_professor
   -sobrenome_professor
+  -status
   
 #DISCIPLINA
   -id_disciplina
   -nome_disciplina
+  -descrição_curricular
+  -id_coordenacao
+  -num_alunos
+  -carga_horaria
   
 #TURMA
   -id_turma
   -classificacao
   -turno
+  -id_serie
+  -num_alunos
+  -data_inicio
+  -data_fim
   
 #HISTÒRICO
   -id_historico
   -nota
   -freguencia 
   -semestre
-  
+  -ra
+  -id_disciplina
+
+#DISCIPLINA_HISTORICO
+
+#COORDENACAO_PROFESSOR
