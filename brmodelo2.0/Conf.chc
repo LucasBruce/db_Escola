@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<APP>
-	<CONFIGURACAO>
+<APP><CONFIGURACAO>
     <Configuracoes>
       <dirLogico Valor="Z:\home\lucas\Área de trabalho\brmodelo\"/>
       <dirConceitual Valor="Z:\home\lucas\Área de trabalho\brmodelo\"/>
@@ -9,14 +8,13 @@
       <ExibirLog Valor="False"/>
     </Configuracoes>
     <Arquivos>
-      <Arq01 Valor="C:\USERS\PC_CASA\DOCUMENTS\GITHUB\DB_ESCOLA\BRMODELO2.0\MODELO_LOGICO_DB_ESCOLA_BRMODELO2.BRM"/>
-      <Arq02 Valor="C:\USERS\PC_CASA\DOCUMENTS\GITHUB\DB_ESCOLA\BRMODELO2.0\MODELO_CONCEITUAL_DB_ESCOLA_BRMODELO2.BRM"/>
-      <Arq03 Valor="C:\USERS\PC_CASA\DOCUMENTS\GITHUB\DB_FACULDADE\BRMODELO2.0\MODELO_LOGICO_COMPLETO.BRM"/>
-      <Arq04 Valor="C:\USERS\LUCAS\MEUS DOCUMENTOS\GITHUB\DB_ESCOLA\MODELO_CONCEITUAL_DB_ESCOLA_BRMODELO2.BRM"/>
-      <Arq05 Valor=""/>
+      <Arq01 Valor="Z:\HOME\LUCAS\DOCUMENTOS\GITHUB\DB_FACULDADE\BRMODELO2.0\TABELAS_NORMALIZADAS_1-2-3-4_FORMA.BRM"/>
+      <Arq02 Valor="Z:\HOME\LUCAS\DOCUMENTOS\GITHUB\DB_ESCOLA\BRMODELO2.0\MODELO_LOGICO_DB_ESCOLA_BRMODELO2.BRM"/>
+      <Arq03 Valor="C:\USERS\PC_CASA\DOCUMENTS\GITHUB\DB_ESCOLA\BRMODELO2.0\MODELO_LOGICO_DB_ESCOLA_BRMODELO2.BRM"/>
+      <Arq04 Valor="C:\USERS\PC_CASA\DOCUMENTS\GITHUB\DB_ESCOLA\BRMODELO2.0\MODELO_CONCEITUAL_DB_ESCOLA_BRMODELO2.BRM"/>
+      <Arq05 Valor="C:\USERS\PC_CASA\DOCUMENTS\GITHUB\DB_FACULDADE\BRMODELO2.0\MODELO_LOGICO_COMPLETO.BRM"/>
     </Arquivos>
-  </CONFIGURACAO>
-	<AJUDA>
+  </CONFIGURACAO><AJUDA>
     <Flash>##
 
 ## Carlos H. Cândido
@@ -204,5 +202,4 @@ DDL ansi 2003: em caso de exclusão na tabela pai, o que deverá acontecer.
 [TBcOrdem]
 
 Ordem de conversão da tabela para o modelo físico.</Flash>
-  </AJUDA>
-</APP>
+  </AJUDA></APP>
