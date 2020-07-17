@@ -272,7 +272,7 @@ insert into tbl_telefone_aluno(ra, id_tipo_telefone, telefone)
   
 /*Consultas testes*/
 
-/*Consulta que traz o nome, telefone, tipo do telefone, nome da rua e tipo do logradouro do aluno*/
+/*1.Consulta que traz o nome, telefone, tipo do telefone, nome da rua e tipo do logradouro do aluno*/
 select a.nome_aluno, ta.telefone, tt.tipo_telefone, e.nome_rua, tl.tipo_logradouro from tbl_aluno a
 inner join tbl_telefone_aluno ta
 on a.ra = ta.ra
@@ -283,3 +283,80 @@ on a.ra = e.ra
 inner join tbl_tipo_logradouro tl
 on tl.id_tipo_logradouro = e.id_tipo_logradouro;
 
+
+/*2. ras, nomes e sobrenomes dos alunos, serie e data início, 
+ordenados pelo primeiro nome de aluno:*/
+select concat(a.ra,', ',a.nome_aluno,', ',a.sobrenome_aluno) 
+as Alunos, concat(s.ano_serie,', ',h.data_inicial) as Historico from tbl_aluno a
+inner join tbl_historico h
+on a.ra = h.ra
+inner join tbl_historico_serie hs 
+on h.id_historico = hs.id_historico
+inner join tbl_serie s
+on s.id_serie = hs.id_serie;
+
+/*3. Todas as disciplinas cursadas por um aluno, com suas respectivas notas:
+Aluno: RA 1 (Alison) nome, sobrenome, nome da disciplina e nota*/
+select concat(a.nome_aluno,' ',a.sobrenome_aluno) as Aluno, 
+concat(d.nome_disciplina,', ',dh.nota) as Notas from tbl_aluno a
+inner join tbl_disciplina_aluno da
+on a.ra = da.ra
+inner join tbl_disciplina d
+on d.id_disciplina = da.id_disciplina
+inner join tbl_historico h
+on a.ra = h.ra
+inner join tbl_disciplina_historico dh
+on h.id_historico = dh.id_historico
+where a.ra = 1 order by a.nome_aluno;
+
+/*4. Nomes e sobrenomes dos professores, e disciplinas que ministram com suas 
+cargas horárias ordenados pelo primeiro nome da disciplina:*/
+select concat(p.nome_professor,' ',p.sobrenome_professor) as Professores, 
+concat(d.nome_disciplina,', ',d.carga_horaria) as Disciplinas from tbl_professor p
+inner join tbl_disciplina_professor dp
+on p.id_professor = dp.id_professor
+inner join tbl_disciplina d
+on d.id_disciplina = dp.id_disciplina
+order by d.nome_disciplina;
+
+/*5. Gerar "relatório" com nomes, sobrenomes, CPF dos alunos, tipos e números
+ de telefones e endereços completos.*/
+ select concat(a.nome_aluno,' ',a.sobrenome_aluno,', ',a.cpf) as Alunos_CPF,
+ concat(t.telefone,', ',tt.tipo_telefone) as telefone, concat(tl.tipo_logradouro,
+ ', ',e.nome_rua) as endereco from tbl_aluno a
+ inner join tbl_telefone_aluno t 
+ on a.ra = t.ra
+ inner join tbl_tipo_telefone tt
+ on tt.id_tipo_telefone = t.id_tipo_telefone
+ inner join tbl_endereco_aluno e
+ on a.ra = e.ra
+ inner join tbl_tipo_logradouro tl
+ on tl.id_tipo_logradouro = e.id_tipo_logradouro;
+ 
+/*6. Listar as disciplinas, indicando seus departamentos, serie e professores*/
+select concat(d.nome_disciplina,', ',c.nome_coordenacao,', ',s.ano_serie) 
+as Disciplina_Serie, concat(p.nome_professor,' ',p.sobrenome_professor) as Professor
+from tbl_disciplina d 
+inner join tbl_coordenacao c
+on c.id_coordenacao = d.id_coordenacao
+inner join  tbl_disciplina_serie ds
+on d.id_disciplina = ds.id_disciplina
+inner join tbl_serie s
+on s.id_serie = ds.id_serie
+inner join tbl_disciplina_professor dp
+on d.id_disciplina = dp.id_disciplina
+inner join tbl_professor p
+on p.id_professor = dp.id_professor;
+
+/*7. Todas as disciplinas cursadas por um aluno, com suas respectivas:
+Aluno: nome, sobrenome, nome das disciplinas, notas*/
+select concat(a.nome_aluno,' ',a.sobrenome_aluno) as Alunos,
+concat(d.nome_disciplina,', ',dh.nota) as Notas from tbl_aluno a
+inner join tbl_disciplina_aluno da
+on a.ra = da.ra
+inner join tbl_disciplina d
+on d.id_disciplina = da.id_disciplina
+inner join tbl_historico h
+on a.ra = h.ra
+inner join tbl_disciplina_historico dh
+on h.id_historico = dh.id_historico;
